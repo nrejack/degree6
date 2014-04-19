@@ -15,33 +15,30 @@
 
 	<body>
 		<script type="text/javascript">
-			var constructor = function() {
-				var name = "John";
-				var age = 30;
-				var obj = {
-					showname: function() {
-						alert(name);
-					},
-					changename: function(newname) {
-						name = newname;
-					}
+			function MyObject(initialname, initialage) {
+				this.name = initialname;
+				this.age = initialage;
+				this.showname = function() {
+					alert(this.name);
 				};
-				return obj;
-			};
-			employee = constructor();
-			employee.showname();
-			employee.name = "alphonse";
-			employee.showname();
-			employee2 = constructor();
-			employee2.changename("alphonse");
-			alert("employee 2 is");
-			employee2.showname();
+				this.changename = function(newname) {
+					this.name = newname;
+				};
+			}
+			MyObject.prototype.showage = function() {
+				alert(this.age);
+			}
+			var employee = new MyObject("Robert", 55);
+			//employee.showage();
+			//window.alert("sup dog");
+			//window.confirm("are u cool lol");
+
 		</script>
 		<div id="wrapper">
 		<header id="main_header"><h1>This is the main title of the website</h1></header>
 		<nav id="main_menu">
 			<ul>
-				<li>home</li>
+				<li onclick="alert('you clicked me')">home</li>
 				<li>photos</li>
 				<li>videos</li>
 				<li>contact</li>

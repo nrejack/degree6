@@ -298,3 +298,78 @@
 			alert("employee 2 is");
 			employee2.showname();
 		</script>
+
+		<!-- Object.create(prototype_object) -->
+
+		<!-- constructor uses this. in function var descriptions, new
+		keyword needed to return obj -->
+		<script type="text/javascript">
+			function MyObject() {
+				this.name = "John";
+				this.age = 30;
+				this.showname = function() {
+					alert(this.name);
+				};
+				this.changename = function(newname) {
+					this.name = newname;
+				};
+			}
+			var employee = new MyObject();
+			employee.showname();
+		</script>
+		
+		<script type="text/javascript">
+			function MyObject(initialname, initialage) {
+				this.name = initialname;
+				this.age = initialage;
+				this.showname = function() {
+					alert(this.name);
+				};
+				this.changename = function(newname) {
+					this.name = newname;
+				};
+			}
+			var employee = new MyObject("Robert", 55);
+			employee.showname();
+		</script>
+
+		<script type="text/javascript">
+			function MyObject(initialname, initialage) {
+				this.name = initialname;
+				this.age = initialage;
+				this.showname = function() {
+					alert(this.name);
+				};
+				this.changename = function(newname) {
+					this.name = newname;
+				};
+			}
+			MyObject.prototype.showage = function() {
+				alert(this.age);
+			}
+			var employee = new MyObject("Robert", 55);
+			employee.showage();
+		</script>
+
+		<script type="text/javascript">
+			function MyObject(initialname, initialage) {
+				this.name = initialname;
+				this.age = initialage;
+				this.showname = function() {
+					alert(this.name);
+				};
+				this.changename = function(newname) {
+					this.name = newname;
+				};
+			}
+			MyObject.prototype.showage = function() {
+				alert(this.age);
+			}
+			var employee = new MyObject("Robert", 55);
+			//employee.showage();
+			//window.alert("sup dog");
+			//window.confirm("are u cool lol");
+			setTimeout(employee.showage(), 5000);
+			alert(location);
+			alert(history);
+		</script>
