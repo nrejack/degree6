@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="description" content="this is a blank page">
+		<meta name="keywords" content="keywords">
+		<title></title>
+		<link rel="stylesheet" href="styles.css">
+<!-- example of embedding style in head element
+		<style>
+			h1 { font-size:20px; color:orange;}
+		</style>
+-->
+	</head>
+
+	<body>
+		<script type="text/javascript">
+			var constructor = function() {
+				var name = "John";
+				var age = 30;
+				var obj = {
+					showname: function() {
+						alert(name);
+					},
+					changename: function(newname) {
+						name = newname;
+					}
+				};
+				return obj;
+			};
+			employee = constructor();
+			employee.showname();
+			employee.name = "alphonse";
+			employee.showname();
+			employee2 = constructor();
+			employee2.changename("alphonse");
+			alert("employee 2 is");
+			employee2.showname();
+		</script>
+		<div id="wrapper">
+		<header id="main_header"><h1>This is the main title of the website</h1></header>
+		<nav id="main_menu">
+			<ul>
+				<li>home</li>
+				<li>photos</li>
+				<li>videos</li>
+				<li>contact</li>
+			</ul>
+		</nav>
+		<section id="main_section">
+			<article>
+				<header>
+					<hgroup>
+						<h1>Title of post one</h1>
+						<h2>subtitle of the post One</h2>
+					</hgroup>
+					<time datetime="2012-10-12T12:10:45" pubdate>posted 12-10-2012</time>
+				</header>
+				This is the text of my first post.
+				<figure>
+					<img src="http://minkbooks.com/content/myimage.jpg">
+					<figcaption id="unique">
+						This is the image of the first post.
+					</figcaption>
+				</figure>
+				<p>This is a <em>awesome</em> post. This is very <strong>important</strong>.
+					I learned how to <span contenteditable="true" style="font-size: 50px; color:blue">use this in the</style></span> book <cite>HTML for Masterminds</cite>
+					<data value="32">Thirty-two</data>
+				</p>
+				<details>
+					<summary class="nonunique">Click <mark>here</mark> to expand</summary>
+					<p>Hey! I'm visible!</p>
+				</details>
+				<footer>
+					<address>
+						<a href="http://www.mysite.com">My site</a>
+					</address>
+					<p>comments (0)</p>
+				</footer>
+			</article>
+			<article>
+				<hgroup>
+						<h1>Title of post two</h1>
+						<h2 class="nonunique">subtitle of the post two</h2>
+					</hgroup>
+					<p>posted 12-15-2012</p>
+				</header>
+				This is the text of the article<br>
+				Visit this URL:www.minkbooks.com<wbr>/content/bricks.jpg
+				<footer>
+					<p>comments (0)</p>
+				</footer>
+			</article>
+			<article>
+				<hgroup>
+						<h1>Title of post three</h1>
+						<h2>subtitle of the post three</h2>
+					</hgroup>
+					<p>posted 12-25-2012</p>
+				</header>
+				This is the text of my third post.
+				<footer>
+					<p>comments (0)</p>
+				</footer>
+			</article>
+		</section>
+		<aside id="main_aside">
+			<blockquote>quotation from article number one</blockquote>
+			<blockquote>quotation froma rticle number two</blockquote>
+		</aside>
+		<footer id="main_footer"><small>Copyright &copy; 2014</small></footer>
+	</div>
+	</body>
+
+</html>
