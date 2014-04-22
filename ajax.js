@@ -13,9 +13,10 @@ function loadArtist() {
 	// now query for albums, then process
 	albumXmlDoc = httpGet('albums', artistInfo['uri']);
 	albumInfo = processAlbumXmlDoc(albumXmlDoc);
+	//console.log(albumInfo);
 
 	// display
-	displayArtist(artistInfo['name']);
+	displayArtist(artistInfo, albumInfo);
 
 
 }
@@ -33,7 +34,7 @@ function httpGet(queryType, artistUri)
     	queryUrl = baseUrl + '?uri=' + artistUri + "&extras=album";
 	}
 
-	console.log("queryUrl = " + queryUrl);
+	//console.log("queryUrl = " + queryUrl);
     
     var xmlHttp = null;
     xmlHttp = new XMLHttpRequest();
@@ -67,41 +68,51 @@ function processAlbumXmlDoc(albumXmlDoc) {
 	//console.log(albumXmlDoc);
 
     x = albumXmlDoc.getElementsByTagName("album");
-    console.log(x);
+    //console.log(x);
 
 	// build new array of names 
     var albums = new Array();
 	for (i = 0; i <= (x.length-2); i++) {
-		albums[i] = x[0].childNodes[1]['textContent'];
+		albums[i] = x[i].childNodes[1]['textContent'];
 	};
 
     //console.log(artist);
     return albums;
 }
 
-function displayArtist(artistName)
+function displayArtist(artist, albums)
 {
-	document.getElementById("databox").innerHTML=artistName;
+	//console.log(artist);
 
+	//document.getElementById("databox").innerHTML=artistName;
+
+	// add nodes to graph
+	var artist_name = graph.newNode({label: artist['name']});
+	//console.log(artist['name']);
+
+	album_array = new Array();
+	//for(var i = 0; i < albums.length; i++){
+	for(var i = 0; i < 20; i++){
+		album_array[i] = graph.newNode({label: albums[i]});
+		//console.log(albums[i]);
+		graph.newEdge(artist_name, album_array[i]);
+	};
+	
+	//var elem = document.getElementById("databox");
+	//var content = elem.innerHTML;
 
 }
 
-function drawGraph()
-{
-	var graph = new Springy.graph();
 
-	var spruce = graph.newNode({label: 'Norway Spruce'});
-	var fir = graph.newNode({label: 'Sicilian Fir'});
 
-	// connect them with an edge
-	graph.newEdge(spruce, fir);
-}
 var databox;
 function initiate() {
+
 	databox = document.getElementById('databox');
 	
 	var button = document.getElementById('submit');
 	button.addEventListener('click', loadArtist);
+
 }
 
 function read() {
@@ -118,8 +129,8 @@ function show(e) {
 		databox.innerHTML = data.responseText;
 	}
 }
-addEventListener('load', drawGraph);
 addEventListener('load', initiate);
+
 /*
 // CORS stuff from http://www.html5rocks.com/en/tutorials/cors/
 function createCORSRequest(method, url) {
