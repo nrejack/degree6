@@ -86,7 +86,7 @@ jQuery.fn.springy = function(params) {
 
 		if (selected.node !== null) {
 			dragged.point.m = 10000.0;
-
+			callSparql(selected.node["data"]["label"]);
 			if (nodeSelected) {
 				nodeSelected(selected.node);
 			}

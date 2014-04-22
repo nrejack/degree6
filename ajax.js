@@ -18,6 +18,13 @@ function loadArtist() {
 	// display
 	displayArtist(artistInfo, albumInfo);
 
+	// fetch news from EchoNest
+	//getNews(artist);
+
+	// SPARQL results
+	callSparql(artist);
+
+
 
 }
 
@@ -82,6 +89,8 @@ function processAlbumXmlDoc(albumXmlDoc) {
 
 function displayArtist(artist, albums)
 {
+	range = document.getElementById('textInput').value; 
+
 	//console.log(artist);
 
 	//document.getElementById("databox").innerHTML=artistName;
@@ -92,7 +101,7 @@ function displayArtist(artist, albums)
 
 	album_array = new Array();
 	//for(var i = 0; i < albums.length; i++){
-	for(var i = 0; i < 20; i++){
+	for(var i = 0; i < range; i++){
 		album_array[i] = graph.newNode({label: albums[i]});
 		//console.log(albums[i]);
 		graph.newEdge(artist_name, album_array[i]);
@@ -103,7 +112,118 @@ function displayArtist(artist, albums)
 
 }
 
+// get headlines from EchoNest
+function getNews(artist)
+{
+	baseUrl = "http://developer.echonest.com/api/v4/artist/news?api_key=YSB0O0HVP4UGUPIVC&name=";
+	finalUrl = "&results=3&start=0";
+	queryUrl = baseUrl + artist + finalUrl;
 
+	/*
+	var xmlHttp = null;
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", queryUrl, false);
+    xmlHttp.send(null);
+    */
+
+    response = $.getJSON(queryUrl);
+    console.log(response);
+    /*
+    //alert(xmlHttp);
+    console.log(xmlHttp.responseText);
+    parsed = JSON.parse(xmlHttp.responseText);
+    console.log(parsed);
+    return xmlHttp.responseText;
+    */
+
+
+
+}
+
+// format news into readable
+function makeNews(news)
+{
+	var stories = "";
+	var numStories = 2; // really but numbering from 0
+
+	// first extract data
+	for(i=0; i < numStories; i++){
+
+	}
+
+	// then reformat and export
+
+	return stories;
+}
+
+//SPARQL for results
+function callSparql(album) {
+      var endpoint = "http://dbpedia.org/sparql";
+      var query = "PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> select * {?s rdf:type <http://dbpedia.org/ontology/Album> . ?s rdfs:label \"REPLACE\"@en. ?s ?p ?o } limit 5" ;
+      query = query.replace("REPLACE", album);
+      //console.log(query);
+
+      // Define a callback function to receive the SPARQL JSON result.
+      function myCallback(str) {
+        // Convert result to JSON
+        var jsonObj = eval('(' + str + ')');
+
+        // Build up a table of results.
+        var result = " <table border='2' cellpadding='9'>" ;
+        for(var i = 0; i<  jsonObj.results.bindings.length; i++) {
+          result += " <tr> <td>" + jsonObj.results.bindings[i].s.value;
+          result += " </td><td>" + jsonObj.results.bindings[i].p.value;
+          result += " </td><td>" + jsonObj.results.bindings[i].o.value;
+          result += " </td></tr>"; 
+        } 
+        result += "</table>" ;
+        console.log(result);
+        document.getElementById("results").innerHTML = result;
+     }
+      
+     // Make the query.
+     sparqlQueryJson(query, endpoint, myCallback, true);
+      
+}
+
+function sparqlQueryJson(queryStr, endpoint, callback, isDebug) {
+      var querypart = "query=" + escape(queryStr);
+    isDebug = false;
+      // Get our HTTP request object.
+      var xmlhttp = null;
+      if(window.XMLHttpRequest) {
+        xmlhttp = new XMLHttpRequest();
+     } else if(window.ActiveXObject) {
+       // Code for older versions of IE, like IE6 and before.
+       xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+     } else {
+       alert('Perhaps your browser does not support XMLHttpRequests?');
+     }
+    
+     // Set up a POST with JSON result format.
+     xmlhttp.open('POST', endpoint, true); // GET can have caching probs, so POST
+     xmlhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+     xmlhttp.setRequestHeader("Accept", "application/sparql-results+json");
+    
+     // Set up callback to get the response asynchronously.
+     xmlhttp.onreadystatechange = function() {
+       if(xmlhttp.readyState == 4) {
+         if(xmlhttp.status == 200) {
+           // Do something with the results
+           if(isDebug) alert(xmlhttp.responseText);
+           callback(xmlhttp.responseText);
+         } else {
+           // Some kind of error occurred.
+           alert("Sparql query error: " + xmlhttp.status + " "
+               + xmlhttp.responseText);
+         }
+       }
+     };
+     // Send the query to the endpoint.
+     xmlhttp.send(querypart);
+    
+     // Done; now just wait for the callback to be called.
+    };
 
 var databox;
 function initiate() {
