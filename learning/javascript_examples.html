@@ -1,0 +1,501 @@
+			var myNumber = 2;
+			myNumber = myNumber + 1;
+			alert(myNumber);
+			var myText = "hello world!";
+			alert(myText);
+			var myArray = ["red", "green", "blue"];
+			alert(myArray);
+			alert(myArray[2]);
+						var myarray = ["red", , 32, null, "HTML5 is awesome!"];
+			alert(myarray[5]);
+
+
+					<script type="text/javascript">
+			var myArray = ["red", 32];
+			alert(myArray[0]);
+			myArray[0] = myArray[0] + " color";
+			myArray[1] = myArray[1] + 10;
+			alert(myArray[0] + " " + myArray[1]);
+		</script>
+
+				<script type="text/javascript">
+			var myArray = ["red", 32];
+			myArray.push('car');
+			alert(myArray[2]);
+			alert(myArray.shift());
+			alert(myArray.pop());
+
+		</script>
+
+
+		<script type="text/javascript">
+			var myVariable = 9;
+			if(myVariable < 10) {
+				alert("the number is smaller than 10");
+			}
+		</script>
+<!-- anonymous function -->
+		<script type="text/javascript">
+			var myVariable = 5;
+			function myFunction() {
+				myVariable = myVariable * 2;
+				alert(myVariable);
+			}
+			for(var f=0; f<10; f++) {
+				myFunction();
+			}
+			alert("the value of myVariable is now " + myVariable);
+		</script>
+
+				<script type="text/javascript">
+			var myVariable = 5;
+			function myFunction() {
+				var myVariable = "this is a function variable";
+				alert(myVariable);
+				}
+				myFunction();
+				alert(myVariable);
+		</script>
+
+				<script type="text/javascript">
+			var myVariable = 5;
+			var myResult;
+			function myFunction(count) {
+				count = count + 12;
+				return count;
+			}
+			myResult = myFunction(myVariable);
+			alert(myResult);
+		</script>
+
+				<script type="text/javascript">
+			var myObject = {
+				name: "John",
+				age: 30
+			}
+			alert("My name is " + myObject.name);
+			alert("My age is " + myObject['age']);
+		</script>
+
+				<script type="text/javascript">
+			var myVariable = "name";
+			var myObject = {
+				name: "John",
+				age: 30
+			}
+			alert(myObject[myVariable]);
+		</script>
+				<script type="text/javascript">
+			var myVariable = 10;
+			if(myVariable < 10) {
+				alert("the number is smaller than 10");
+			}
+			else {
+				alert("the number is 10 or bigger");
+			}
+		</script>
+
+				<script type="text/javascript">
+			var myVariable = 23;
+			switch(myVariable) {
+				case 5:
+					alert("the number is five");
+					break;
+				case 9:
+					alert("the number is eight");
+					break;
+				case 10:
+					alert("the number is ten");
+					break;
+				default:
+					alert("the number is " + myVariable);
+			}
+		</script>
+
+				<script type="text/javascript">
+				var myVariable = 9;
+				for(var f=0; f < myVariable; f++) {
+					alert("the current number is " + f);
+				}
+		</script>
+
+				<script type="text/javascript">
+			var myVariable = 9;
+			while(myVariable < 100) {
+				myVariable++;
+			}
+			alert("the final value of myVariable is " + myVariable);
+		</script>
+
+				<script type="text/javascript">
+			var myVariable = 9;
+			do {
+				myVariable++;
+			} while(myVariable > 100);
+			alert("the final value of myVariable is " + myVariable);
+		</script>
+
+				<script type="text/javascript">
+			function myFunction() {
+				alert("I'm a funcction");
+			}
+			myFunction();
+		</script>
+
+
+				<script type="text/javascript">
+			var myVariable = "name";
+			var myObject = {
+				name: "John",
+				age: 30
+			}
+			alert(myObject[myVariable]);
+		</script>
+
+				<script type="text/javascript">
+			var myObject = {
+				name: "John",
+				age: 30
+			}
+			myObject.name = "Martin";
+			myObject.job = "Programmer";
+			alert(myObject.name + " " + myObject.age + " " + myObject.job);
+		</script>
+
+				<script type="text/javascript">
+			var myObject = {
+				name: "John",
+				age: 30,
+				showname: function() {
+					alert(myObject.name);
+				},
+				changename: function(newname) {
+					myObject.name = newname;
+				}
+			}
+		myObject.showname();
+		myObject.changename('Jonathan');
+		myObject.showname();
+		</script>
+
+				<script type="text/javascript">
+			var myObject = {
+				name: "John",
+				age: 30,
+				bike: {
+					model: "Suzuki",
+					year: 1981
+				},
+				showcar: function() {
+					alert(myObject.name + " owns a " + myObject.bike.model);
+				}
+			}
+			myObject.showcar(); 
+		</script>
+
+
+				<script type="text/javascript">
+			var myObject = {
+				name: "John",
+				age: 30,
+				showname: function() {
+					alert(this.name);
+				},
+				changename: function(newname) {
+					this.name = newname;
+				}
+			}
+			var employee = Object.create(myObject);
+			employee.changename('Robert');
+			employee.showname();
+			myObject.showname();
+		</script>
+
+				<script type="text/javascript">
+			var myObject = {
+				name: "John",
+				age: 30,
+				showname: function() {
+					alert(this.name);
+				},
+				changename: function(newname) {
+					this.name = newname;
+				}
+			}
+			var employee = Object.create(myObject);
+			employee.age = 24;
+			myObject.showage = function() {
+				alert(this.age);
+			};
+
+			employee.showage();
+		</script>
+
+
+		<script type="text/javascript">
+			var myObject = {
+				name: "John",
+				age: 30,
+				showname: function() {
+					alert(this.name);
+				},
+				changename: function(newname) {
+					this.name = newname;
+				}
+			}
+		var employee1 = Object.create(myObject);
+		var employee2 = Object.create(employee1);
+		var employee3 = Object.create(employee2);
+
+		employee2.showage = function() {
+			alert(this.age);
+		}
+		employee3.age = 24;
+		employee3.showage();
+		employee1.showage();
+		</script>
+
+
+				<script type="text/javascript">
+			var constructor = function(initialname) {
+				var obj = {
+					name: initialname,
+					age: 30,
+					showname: function() {
+						alert(this.name);
+					},
+					changename: function(newname) {
+						this.name = newname;
+					}
+				};
+				return obj;
+			};
+			employee = constructor("John");
+			employee.showname();
+		</script>
+
+
+				<script type="text/javascript">
+			var constructor = function() {
+				var name = "John";
+				var age = 30;
+				var obj = {
+					showname: function() {
+						alert(name);
+					},
+					changename: function(newname) {
+						name = newname;
+					}
+				};
+				return obj;
+			};
+			employee = constructor();
+			employee.showname();
+			employee.name = "alphonse";
+			employee.showname();
+			employee2 = constructor();
+			employee2.changename("alphonse");
+			alert("employee 2 is");
+			employee2.showname();
+		</script>
+
+		<!-- Object.create(prototype_object) -->
+
+		<!-- constructor uses this. in function var descriptions, new
+		keyword needed to return obj -->
+		<script type="text/javascript">
+			function MyObject() {
+				this.name = "John";
+				this.age = 30;
+				this.showname = function() {
+					alert(this.name);
+				};
+				this.changename = function(newname) {
+					this.name = newname;
+				};
+			}
+			var employee = new MyObject();
+			employee.showname();
+		</script>
+		
+		<script type="text/javascript">
+			function MyObject(initialname, initialage) {
+				this.name = initialname;
+				this.age = initialage;
+				this.showname = function() {
+					alert(this.name);
+				};
+				this.changename = function(newname) {
+					this.name = newname;
+				};
+			}
+			var employee = new MyObject("Robert", 55);
+			employee.showname();
+		</script>
+
+		<script type="text/javascript">
+			function MyObject(initialname, initialage) {
+				this.name = initialname;
+				this.age = initialage;
+				this.showname = function() {
+					alert(this.name);
+				};
+				this.changename = function(newname) {
+					this.name = newname;
+				};
+			}
+			MyObject.prototype.showage = function() {
+				alert(this.age);
+			}
+			var employee = new MyObject("Robert", 55);
+			employee.showage();
+		</script>
+
+		<script type="text/javascript">
+			function MyObject(initialname, initialage) {
+				this.name = initialname;
+				this.age = initialage;
+				this.showname = function() {
+					alert(this.name);
+				};
+				this.changename = function(newname) {
+					this.name = newname;
+				};
+			}
+			MyObject.prototype.showage = function() {
+				alert(this.age);
+			}
+			var employee = new MyObject("Robert", 55);
+			//employee.showage();
+			//window.alert("sup dog");
+			//window.confirm("are u cool lol");
+			setTimeout(employee.showage(), 5000);
+			alert(location);
+			alert(history);
+		</script>
+
+		<script type="text/javascript">
+			function MyObject(initialname, initialage) {
+				this.name = initialname;
+				this.age = initialage;
+				this.showname = function() {
+					alert(this.name);
+				};
+				this.changename = function(newname) {
+					this.name = newname;
+				};
+			}
+			MyObject.prototype.showage = function() {
+				alert(this.age);
+			}
+			var employee = new MyObject("Robert", 55);
+			//employee.showage();
+			//window.alert("sup dog");
+			//window.confirm("are u cool lol");
+
+		</script>
+
+			<script>
+		function clickme() {
+			var elem = document.getElementsByTagName('p')[0];
+			elem.addEventListener('mouseout', showalert);
+		}
+		function showalert() {
+			alert('you clicked me!');
+		}
+		addEventListener('load', clickme);
+	</script>
+
+	function clickme() {
+	var elem = document.querySelector("#main p");
+	elem.addEventListener('click', showalert);
+}
+
+function showalert() {
+	alert('you clicked me!');
+}
+addEventListener('load', clickme)
+
+
+function clickme() {
+	var elem = document.getElementById('main');
+	var pelem;
+	if(elem.webkitMatchesSelector("section")) {
+		pelem = elem.querySelector("p:first-child");
+		pelem.addEventListener('click', showalert);
+	}
+}
+
+function showalert() {
+	alert('you clicked me!');
+}
+addEventListener('load', clickme)
+
+
+function clickme() {
+	var elem = document.getElementById('main');
+	var pelem;
+	if(elem.webkitMatchesSelector("section")) {
+		pelem = elem.querySelector("p:first-child");
+		pelem.addEventListener('click', showalert);
+	}
+}
+
+function showalert() {
+	alert('you clicked me!');
+}
+addEventListener('load', clickme)
+
+function newstyle() {
+	var elem = document.getElementById('main');
+	elem.style.background = "#990000";
+}
+addEventListener('load', newstyle);
+
+		<script>
+			var elem;
+			function initiate() {
+				elem = document.getElementById('main');
+				elem.addEventListener('click', changeclass);
+			}
+			function changeclass() {
+				elem.className = "myclass";
+			}
+			addEventListener('load', initiate);
+		</script>
+
+		<script>
+			var elem;
+			function initiate() {
+				elem = document.getElementById('main');
+				elem.addEventListener('click', changeclass);
+			}
+			function changeclass() {
+				elem.classList.toggle("myclass");
+			}
+			addEventListener('load', initiate);
+		</script>
+
+
+				<script>
+			var elem;
+			function initiate() {
+				elem = document.getElementById('main');
+				elem.addEventListener('click', isclasson);
+			}
+			function changeclasson() {
+				elem.classList.add("myclass");
+			}
+			function changeclassoff() {
+				elem.classList.remove("myclass");
+			}
+			function isclasson() {
+				if(elem.classList.contains("myclass")) {
+					changeclassoff();
+				}
+				else {
+					changeclasson();
+				}
+			}
+			addEventListener('load', initiate);
+		</script>

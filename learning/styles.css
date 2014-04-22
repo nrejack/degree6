@@ -1,0 +1,118 @@
+/* available properties:
+font
+color
+background
+width
+height
+margin (up right bottom left)
+	margin-top margin-right margin-bottom margin-left
+padding
+	padding-top padding-right padding-bottom padding-left
+border
+	hidden, dotted, dashed, solid, double, groove, ridge, inset, outset, inherit
+text-align
+	left, right, center, justify, inherit
+*/
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+header, section, footer, aside, nav, article, figure, figcaption, hgroup {
+	display:block;
+	/* possible values: block, inline, inline-block */
+}
+
+body {
+	text-align: center;
+}
+
+#wrapper {
+	width: 960px;
+	margin: 15px auto;
+	text-align: left;
+}
+
+#main_header {
+	background: #FFFBB9;
+	border: 1px solid #999999;
+	padding: 20px;
+}
+
+#main_menu {
+	background: #CCCCCC;
+	padding: 5px 15px;
+}
+
+#main_menu li {
+	display: inline-block;
+	list-style: none;
+	padding: 5px;
+	font: bold 14px verdana, sans-serif;
+}
+
+#main_section {
+	float: left;
+	width: 660px;
+	margin: 20px;
+}
+
+#main_aside {
+	float:left;
+	width: 220px;
+	margin: 20px 0px;
+	padding: 20px;
+	background: #CCCCCC;
+}
+
+#main_footer {
+	clear: both;
+	text-align: center;
+	padding: 20px;
+	border-top: 2px solid #999999;
+}
+article {
+	background: #FFFBCC;
+	border: 1px solid #999999;
+	padding: 20px;
+	margin-bottom: 15px
+}
+
+article footer {
+	text-align: right;
+}
+
+time {
+	color: #999999;
+}
+
+figcaption {
+	font: italic 14px verdana, sans-serif;
+}
+p {
+	font: bold 20px arial,sans-serif;
+}
+
+p span {
+	color: #FF0000;
+	font-size: 24px;
+}
+
+/* id */
+#unique
+{
+	color:green;
+}
+
+/* class */
+.nonunique 
+{
+	color:purple;
+}
+
+h1 {
+	font: bold 20px verdana, sans-serif;
+}
+h2 {
+	font: bold 14px verdana, sans-serif;
+}
