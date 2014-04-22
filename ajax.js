@@ -159,7 +159,7 @@ function makeNews(news)
 //SPARQL for results
 function callSparql(album) {
       var endpoint = "http://dbpedia.org/sparql";
-      var query = "PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> select * {?s rdf:type <http://dbpedia.org/ontology/Album> . ?s rdfs:label \"REPLACE\"@en. ?s ?p ?o } limit 5" ;
+      var query = "PREFIX rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> select * {?s rdf:type <http://dbpedia.org/ontology/Album> . ?s rdfs:label \"REPLACE\"@en. ?s ?p ?o } " ;
       query = query.replace("REPLACE", album);
       //console.log(query);
 

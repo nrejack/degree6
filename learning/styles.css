@@ -63,6 +63,7 @@ body {
 	margin: 20px 0px;
 	padding: 20px;
 	background: #CCCCCC;
+	overflow: auto;
 }
 
 #main_footer {

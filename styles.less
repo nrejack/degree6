@@ -72,6 +72,7 @@ header, section, footer, aside, nav, article, figure, figcaption, hgroup {
 	margin: 20px 0px;
 	padding: 20px 0px auto auto;
 	background: @backgroundInterface;
+
 }
 
 #controller {
@@ -139,9 +140,31 @@ canvas {
 }
 #results {
 	float:left;	
+		display: inline-block;
+		float:left;
+	width: 25%;
+	height:100%;
+	margin: 20px 0px;
+	padding: 20px 0px auto auto;
+	background: @backgroundInterface;
 }
 .resultsspan
 {
 	font: sans-serif 14px;
+	font-family: sans-serif;
 	color:white;
 }
+
+
+table, td, th
+{
+border:1px solid @tertiaryA;
+border-style: groove;
+}
+th
+{
+background-color:@primaryA;
+color:white;
+}
+tr:nth-child(odd)		{ background-color:darken(@secondaryC, 20%); }
+tr:nth-child(even)		{ background-color:darken(@tertiaryA, 20%); }
